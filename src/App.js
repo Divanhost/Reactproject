@@ -30,7 +30,7 @@ class B extends React.Component{
   render(){
     return(
       <div>
-        <button onClick={()=>{this.props.bbFunc(this.state.headerText)}}>Вторая</button>
+        <button className = 'btn' onClick={()=>{this.props.bbFunc(this.state.headerText)}}>Apply</button>
         <D dFunc ={this.bFunc}/>
       </div>
       
@@ -39,12 +39,23 @@ class B extends React.Component{
 }
 
 class D extends React.Component{
- componentDidMount(){
-  var text = 'Ah, Hello there';
-  this.props.dFunc(text);
- }
+ 
+  handleChange = (e)=>{
+    const {value} = e.currentTarget;
+
+    this.props.dFunc(value);
+  }
   render(){
-      return(<div></div>)
+      return(
+     
+        <input
+                className = "textfield"
+                type='text'
+                onChange={this.handleChange}
+                placeholder='Введите текст'
+                />
+      )
+
   }
 }
 
